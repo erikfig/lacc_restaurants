@@ -17,16 +17,17 @@ use Illuminate\Support\Facades\Storage;
 
 class Restaurant extends Model
 {
-    protected $path = 'app/restaurant/';
+    protected $path = 'restaurant/';
 
-    protected $fillable = ['name', 'description', 'photo'];
+    protected $fillable = ['name', 'description', 'photo', 'user_id'];
 
     protected $appends = ['photo_full_url'];
 
     protected function getPhotoFullUrlAttribute()
     {
-        if ($this->attributes['photo']) {
-            return Storage::url($this->path . $this->photo);
+        if (!empty($this->attributes['photo'])) {
+            $url = Storage::url($this->path . $this->photo);
+            return \URL::to('/') . $url;
         }
 
         return null;

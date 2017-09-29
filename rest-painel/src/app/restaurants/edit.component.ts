@@ -12,8 +12,8 @@ export class EditComponent implements OnInit {
 
     dragging: boolean      = false;
     restaurant: any        = {};
-    photos: any            = {};
-    photos_restaurant: any = {};
+    photos: any            = [];
+    photos_restaurant: any = [];
     address: any           = {};
     upload_status: string  = 'not';
     restaurantPhoto: any   = null;
@@ -27,6 +27,7 @@ export class EditComponent implements OnInit {
     ngOnInit() {
         this.appHttpService.getUser()
             .then( ( res ) => {
+                console.log(res);
                 let id = res.restaurant.id;
 
                 this.httpService.builder()

@@ -22,7 +22,7 @@ trait UploadObserverTrait
     {
         $field = $this->field;
 
-        if ($model->$field->isValid()) {
+        if (is_a($model->$field, UploadedFile::class) and $model->$field->isValid()) {
             $this->upload($model);
         }
     }
@@ -41,7 +41,9 @@ trait UploadObserverTrait
         if (is_a($model->$field, UploadedFile::class) and $model->$field->isValid()) {
             $previous_image = $model->getOriginal($field);
             $this->upload($model);
-            Storage::delete($this->path .'/'. $previous_image);
+            if ($previous_image) {
+                Storage::delete($this->path .DIRECTORY_SEPARATOR. $previous_image);
+            }
         }
     }
 
