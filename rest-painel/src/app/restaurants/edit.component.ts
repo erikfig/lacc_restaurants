@@ -27,7 +27,7 @@ export class EditComponent implements OnInit {
     ngOnInit() {
         this.appHttpService.getUser()
             .then( ( res ) => {
-                console.log(res);
+                console.log('RES: ', res);
                 let id = res.restaurant.id;
 
                 this.httpService.builder()
@@ -35,12 +35,14 @@ export class EditComponent implements OnInit {
                     .then( ( res ) => {
                         this.restaurant = res;
                         this.address    = res.address || {};
+
                         window.Materialize.updateTextFields();
 
                         return this.httpService.builder( '/' + this.restaurant.id + '/photos' ).list();
 
                     } )
                     .then( ( res ) => {
+                        console.log('Aqui: ', res);
                         this.photos = res;
                     } );
             } );

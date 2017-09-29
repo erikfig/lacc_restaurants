@@ -23,6 +23,15 @@ class Restaurant extends Model
 
     protected $appends = ['photo_full_url'];
 
+//    protected function getPhotoFullUrlAttribute()
+//    {
+//        if ($this->attributes['photo']) {
+//            return Storage::url($this->path . $this->photo);
+//        }
+//
+//        return null;
+//    }
+
     protected function getPhotoFullUrlAttribute()
     {
         if (!empty($this->attributes['photo'])) {

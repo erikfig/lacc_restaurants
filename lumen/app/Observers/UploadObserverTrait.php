@@ -31,7 +31,7 @@ trait UploadObserverTrait
     {
         $field = $this->field;
 
-        Storage::delete($this->path . $model->$field);
+        Storage::delete($this->path  . $model->$field);
 
     }
 

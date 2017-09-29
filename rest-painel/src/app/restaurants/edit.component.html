@@ -101,14 +101,15 @@
                 <div class="col s12 margin-bottom">
                     <span class="card-title">Fotos do restaurante</span>
                 </div>
-
+                {{photos | json}}
                 <div class="col s3 margin-bottom" *ngFor="let photo of photos">
+                    --- {{ photo | json }}
                     <!--{{ URL::to('img/' . $myFile) ]) }}-->
-                    <img src="http://3.bp.blogspot.com/-9p4wwsufLgM/VIWshn8-OvI/AAAAAAAAMYY/Y12Ve3Eg-2w/s1600"
-                    class="materialboxed responseive-img" width="300"/>
-                    <!--<img src="{{getImageSourceFromPhotoPath(photo.url)}}"-->
-                         <!--class="materialboxed responseive-img" width="300"/>-->
-                    <!--<a class="btn"><i class="material-icons">cancel</i></a>-->
+                    <!--<img src="http://3.bp.blogspot.com/-9p4wwsufLgM/VIWshn8-OvI/AAAAAAAAMYY/Y12Ve3Eg-2w/s1600"-->
+                    <!--class="materialboxed responseive-img" width="300"/>-->
+                    <img src="http://localhost:8000{{photo.full_url}}{{photo.url}}"
+                         class="materialboxed responseive-img" width="300"/>
+                    <a class="btn"><i class="material-icons">cancel</i></a>
                 </div>
             </div>
         </div>
